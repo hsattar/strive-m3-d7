@@ -17,13 +17,13 @@ fetchData()
 
 const displayData = data => {
     const tableBody = document.querySelector('.tableBody')
-    tableBody.innerHTML = data.map(user => `
+    tableBody.innerHTML = data.map(({id, username, name, email}) => `
     <tr>
-        <th scope="row">${user.id}</th>
-        <td>${user.username}</td>
-        <td>${user.name}</td>
-        <td>${user.email}</td>
-        <td><a class="text-dark" href="./user.html?userId=${user.id}"><i class="bi bi-box-arrow-up-right mr-2"></i></a></td>
+        <th scope="row">${id}</th>
+        <td>${username}</td>
+        <td>${name}</td>
+        <td>${email}</td>
+        <td><a class="text-dark" href="./user.html?userId=${id}"><i class="bi bi-box-arrow-up-right mr-2"></i></a></td>
     </tr>`).join('')
 }
 
@@ -53,12 +53,12 @@ const showAddressBtn = document.querySelector('#showAddress')
 const moreInfo = document.querySelector('.moreInfo')
 
 showCompanyBtn.addEventListener('click', () => {
-    moreInfo.innerHTML = userData.map(user => `<p><b>${user.name}</b> works at <b>${user.company.name}</b></p>`).join('')
+    moreInfo.innerHTML = userData.map(({name, company}) => `<p><b>${name}</b> works at <b>${company.name}</b></p>`).join('')
 })
 
 showAddressBtn.addEventListener('click', () => {
-    moreInfo.innerHTML = userData.map(user => `
-    <p><b>${user.name}</b> lives at <b>${user.address.street} ${user.address.suite} ${user.address.city} (${user.address.zipcode})</b></p>
+    moreInfo.innerHTML = userData.map(({name, address}) => `
+    <p><b>${name}</b> lives at <b>${address.street} ${address.suite} ${address.city} (${address.zipcode})</b></p>
     `).join('')
 })
 
@@ -70,11 +70,11 @@ const sortBtn = document.querySelector('#sortName')
 sortBtn.addEventListener('click', () => {
     sortBtnClicks++
     const ascendingNames = []
-    userData.forEach(user => ascendingNames.push(user.name))
+    userData.forEach(({name}) => ascendingNames.push(name))
     ascendingNames.sort()
 
     const descendingNames = []
-    userData.forEach(user => descendingNames.push(user.name))
+    userData.forEach(({name}) => descendingNames.push(name))
     descendingNames.sort()
     descendingNames.reverse()
 
@@ -83,8 +83,6 @@ sortBtn.addEventListener('click', () => {
 
 const sortArray = (array) => {
     const usersSortedByName = []
-    array.forEach(currentName => {
-        usersSortedByName.push(userData.find(({name}) => name === currentName))
-    })
+    array.forEach(currentName => usersSortedByName.push(userData.find(({name}) => name === currentName)))
     displayData(usersSortedByName)
 }
