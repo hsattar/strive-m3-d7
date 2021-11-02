@@ -64,15 +64,27 @@ showAddressBtn.addEventListener('click', () => {
 
 // SORT BY NAME
 
+let sortBtnClicks = 1
+
 const sortBtn = document.querySelector('#sortName')
 sortBtn.addEventListener('click', () => {
-    const names = []
-    userData.forEach(user => names.push(user.name))
-    const sortedNames = names.sort()
-    const usersSortedByName = []
-    sortedNames.forEach(currentName => {
-        const foundUser = userData.find(({name}) => name === currentName)
-        usersSortedByName.push(foundUser)
-        displayData(usersSortedByName)
-    })
+    sortBtnClicks++
+    const ascendingNames = []
+    userData.forEach(user => ascendingNames.push(user.name))
+    ascendingNames.sort()
+
+    const descendingNames = []
+    userData.forEach(user => descendingNames.push(user.name))
+    descendingNames.sort()
+    descendingNames.reverse()
+
+    return (sortBtnClicks % 2 === 0) ? sortArray(ascendingNames) : sortArray(descendingNames)
 })
+
+const sortArray = (array) => {
+    const usersSortedByName = []
+    array.forEach(currentName => {
+        usersSortedByName.push(userData.find(({name}) => name === currentName))
+    })
+    displayData(usersSortedByName)
+}
