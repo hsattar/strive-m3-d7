@@ -61,3 +61,18 @@ showAddressBtn.addEventListener('click', () => {
     <p><b>${user.name}</b> lives at <b>${user.address.street} ${user.address.suite} ${user.address.city} (${user.address.zipcode})</b></p>
     `).join('')
 })
+
+// SORT BY NAME
+
+const sortBtn = document.querySelector('#sortName')
+sortBtn.addEventListener('click', () => {
+    const names = []
+    userData.forEach(user => names.push(user.name))
+    const sortedNames = names.sort()
+    const usersSortedByName = []
+    sortedNames.forEach(currentName => {
+        const foundUser = userData.find(({name}) => name === currentName)
+        usersSortedByName.push(foundUser)
+        displayData(usersSortedByName)
+    })
+})
