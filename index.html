@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Random Users</title>
 <script src="script.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 <link rel="stylesheet" href="style.css">
 
@@ -16,6 +17,11 @@
 <div class="container">
 
 <h1 class="text-center my-4">Random User Data</h1>
+
+<div class="btn-group mb-3 w-100" role="group" aria-label="Basic example">
+    <button type="button" id="showCompany" class="btn btn-outline-primary">Show All Companies</button>
+    <button type="button" id="showAddress" class="btn btn-outline-primary">Show All Addresses</button>
+</div>
 
 <div class="input-group mb-3">
     <div class="input-group-prepend">
@@ -35,6 +41,7 @@
         <th scope="col">Username</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
+        <th scope="col"><i class="bi bi-link-45deg"></i></th>
         </tr>
     </thead>
     <tbody class="tableBody">

@@ -1,3 +1,5 @@
+// LOAD AND DISPLAY USER DATA
+
 let userData = []
 
 const fetchData = async () => {
@@ -21,8 +23,11 @@ const displayData = data => {
         <td>${user.username}</td>
         <td>${user.name}</td>
         <td>${user.email}</td>
+        <td><a class="text-dark" href="./user.html?userId=${user.id}"><i class="bi bi-box-arrow-up-right mr-2"></i></a></td>
     </tr>`).join('')
 }
+
+// FILTER USER RESULTS
 
 const filterResults = (filterHeading, input) => {
     const filteredData = userData.filter(user => user[filterHeading.toLowerCase()].toLowerCase().includes(input.toLowerCase()))
@@ -40,3 +45,10 @@ filterCategory.addEventListener('change', () => {
 filterInput.addEventListener('keyup', () => {
     filterResults(filterCategory.value, filterInput.value)
 })
+
+// SHOW EXTRA INFORMATION
+
+const showCompanyBtn = document.querySelector('#showCompany')
+const showAddressBtn = document.querySelector('#showAddress')
+
+// SEE MORE DETAILS FOR EACH USER
