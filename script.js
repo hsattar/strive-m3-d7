@@ -11,7 +11,16 @@ const fetchData = async () => {
 fetchData()
 
 const displayData = async data => {
-    const tableBody = document.querySelector('.tableBody')
     console.log(data)
+    const tableBody = document.querySelector('.tableBody')
+    tableBody.innerHTML = data.map(user => `
+    <tr>
+        <th scope="row">${user.id}</th>
+        <td>${user.username}</td>
+        <td>${user.name}</td>
+        <td>${user.email}</td>
+        <td>${user.phone}</td>
+        <td>${user.website}</td>
+    </tr>`).join('')
 }
 
