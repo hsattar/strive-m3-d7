@@ -19,8 +19,14 @@
 <h1 class="text-center my-4">Random User Data</h1>
 
 <div class="btn-group mb-3 w-100" role="group" aria-label="Basic example">
-    <button type="button" id="showCompany" class="btn btn-outline-primary">Show All Companies</button>
-    <button type="button" id="showAddress" class="btn btn-outline-primary">Show All Addresses</button>
+    <button type="button" id="showCompany" class="btn btn-outline-primary" data-toggle="collapse" data-target="#infoCard">Show All Companies</button>
+    <button type="button" id="showAddress" class="btn btn-outline-primary" data-toggle="collapse" data-target="#infoCard">Show All Addresses</button>
+</div>
+
+<div class="collapse mb-3" id="infoCard">
+    <div class="card card-body moreInfo">
+      Company
+    </div>
 </div>
 
 <div class="input-group mb-3">

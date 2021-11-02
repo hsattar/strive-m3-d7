@@ -50,5 +50,14 @@ filterInput.addEventListener('keyup', () => {
 
 const showCompanyBtn = document.querySelector('#showCompany')
 const showAddressBtn = document.querySelector('#showAddress')
+const moreInfo = document.querySelector('.moreInfo')
 
-// SEE MORE DETAILS FOR EACH USER
+showCompanyBtn.addEventListener('click', () => {
+    moreInfo.innerHTML = userData.map(user => `<p><b>${user.name}</b> works at <b>${user.company.name}</b></p>`).join('')
+})
+
+showAddressBtn.addEventListener('click', () => {
+    moreInfo.innerHTML = userData.map(user => `
+    <p><b>${user.name}</b> lives at <b>${user.address.street} ${user.address.suite} ${user.address.city} (${user.address.zipcode})</b></p>
+    `).join('')
+})
